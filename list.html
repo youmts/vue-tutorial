@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Class and Style</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <ul id="example-1">
+      <li v-for="item in items">
+        {{ item.message }}
+      </li>
+    </ul>
+    <script>
+    var vm1 = new Vue({
+      el: '#example-1',
+      data: {
+        items: [
+          { message: 'Foo' },
+          { message: 'Bar' },
+        ]
+      },
+    })
+    </script>
+
+    <ul id = "example-2">
+      <li v-for="(item, index) in items">
+        {{ parentMessage }} - {{ index }} - {{ item.message }}
+      </li>
+    </ul>
+    <script>
+    var vm2 = new Vue({
+      el: '#example-2',
+      data: {
+        parentMessage: 'Parent',
+        items: [
+          { message: 'Foo' },
+          { message: 'Bar' },
+        ]
+      }
+    })
+    </script>
+
+    <ul id="v-for-object" class="demo">
+      <li v-for="(value, key) in object">
+        {{ key }}: {{ value }}
+      </li>
+    </ul>
+    <script>
+    var vm3 = new Vue({
+      el: '#v-for-object',
+      data: {
+        object: {
+          firstName: 'John',
+          lastName: 'Doe',
+          age: 30,
+        }
+      }
+    })
+    </script>
+    
+    <ul id="example-4">
+      <li v-for="n in evenNumbers">{{ n }}</li>
+    </ul>
+    <script>
+    var vm4 = new Vue({
+      el: '#example-4',
+      data: {
+        numbers: [ 1, 2, 3, 4, 5]
+      },
+      computed: {
+        evenNumbers: function () {
+          return this.numbers.filter(function (number) {
+            return number % 2 === 0
+          })
+        }
+      }
+    })
+    </script>
+
+    <div id="example-5">
+      <span v-for="n in 10">{{ n }}</span>
+
+      <ul>
+        <template v-for="n in 10">
+          <li>{{ n }}</li>
+          <li class="divider" role="presentation"></li>
+        </template>
+      </ul>
+    </div>
+    <script>
+    var vm5 = new Vue({
+      el: '#example-5'
+    })
+    </script>
+  </body>
+</html>

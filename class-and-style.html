@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Class and Style</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="static"
+      v-bind:class="classObject"></div>
+    </div>
+    <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        isActive: true,
+        error: false,
+      },
+      computed: {
+        classObject: function () {
+          return {
+            active: this.isActive && !this.error,
+            'text-danger': this.error && this.error.type === 'fatal'
+          }
+        }
+      }
+    })
+    </script>
+
+    <div id="app2">
+      <div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+    </div>
+    <script>
+    var vm2 = new Vue({
+      el: "#app2",
+      data: {
+        isActive: true,
+        activeClass: 'active',
+        errorClass: 'text-danger'
+      }
+    })
+    </script>
+  </body>
+</html>

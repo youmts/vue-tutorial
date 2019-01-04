@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Class and Style</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <template v-if="Math.random() > 0.5">
+        <h1>Yes</h1>
+      </template>
+      <template v-else>
+        <h1>No</h1>
+      </template>
+    </div>
+    <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        ok: true,
+      },
+    })
+    </script>
+  </body>
+</html>
